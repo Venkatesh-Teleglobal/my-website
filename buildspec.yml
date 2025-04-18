@@ -3,11 +3,17 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Debugging file structure..."
-      - pwd
+      - echo "Checking files..."
       - ls -la
-      - find / -name buildspec.yml 2>/dev/null || echo "File not found anywhere"
+      - echo "Current directory: $(pwd)"
   
   build:
     commands:
-      - echo "Build phase reached"
+      - echo "Copying files to artifact directory"
+      - mkdir -p artifact
+      - cp index.html styles.css artifact/
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'artifact'
