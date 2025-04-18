@@ -2,18 +2,19 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 14
     commands:
-      - echo "Checking files..."
-      - ls -la
-      - echo "Current directory: $(pwd)"
-  
+      - echo Installing dependencies...
+      - npm install
   build:
     commands:
-      - echo "Copying files to artifact directory"
-      - mkdir -p artifact
-      - cp index.html styles.css artifact/
-
+      - echo Build started on `date`
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
 artifacts:
   files:
     - '**/*'
-  base-directory: 'artifact'
+  base-directory: 'dist'
