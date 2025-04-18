@@ -3,15 +3,11 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "No dependencies to install for static HTML"
+      - echo "Debugging file structure..."
+      - pwd
+      - ls -la
+      - find / -name buildspec.yml 2>/dev/null || echo "File not found anywhere"
   
   build:
     commands:
-      - echo "Building static HTML site"
-      # No build commands needed for plain HTML
-      - echo "Simply deploying index.html"
-
-artifacts:
-  files:
-    - 'index.html'  # This is your only file
-  # No base-directory needed since file is in root
+      - echo "Build phase reached"
