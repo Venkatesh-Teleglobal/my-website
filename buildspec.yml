@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "No dependencies to install for static HTML"
+  
+  build:
+    commands:
+      - echo "Building static HTML site"
+      # No build commands needed for plain HTML
+      - echo "Simply deploying index.html"
+
+artifacts:
+  files:
+    - 'index.html'  # This is your only file
+  # No base-directory needed since file is in root
