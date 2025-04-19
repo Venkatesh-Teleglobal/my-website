@@ -1,26 +1,14 @@
-version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /var/www/html
-hooks:
-  ApplicationStop:
-    - location: scripts/stop_server.sh
-      timeout: 300
-      runas: root
-  BeforeInstall:
-    - location: scripts/before_install.sh
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: scripts/after_install.sh
-      timeout: 300
-      runas: root
-  ApplicationStart:
-    - location: scripts/start_server.sh
-      timeout: 300
-      runas: root
-  ValidateService:
-    - location: scripts/validate_service.sh
-      timeout: 300
-      runas: root
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16  # Not needed for HTML but often included for potential future needs
+  build:
+    commands:
+      - echo "Building the website"  # For HTML/CSS, this could be empty
+      - echo "No actual build needed for static files"
+artifacts:
+  files:
+    - '**/*'  # Include all files
+  base-directory: .  # Start from root of repo
