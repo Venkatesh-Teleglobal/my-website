@@ -1,0 +1,13 @@
+version: 0.0
+
+phases:
+  build:
+    commands:
+      - echo "Building the website"
+      - find . -type f -name "*.html" -exec cp {} $CODEBUILD_OUTPUT_DIR \;
+      - find . -type f -name "*.css" -exec cp {} $CODEBUILD_OUTPUT_DIR \;
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: $CODEBUILD_OUTPUT_DIR
