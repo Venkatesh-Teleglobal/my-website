@@ -1,18 +1,19 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Installing NGINX
+      - sudo apt-get update
+      - sudo apt-get install nginx -y
   build:
     commands:
-      - echo "Building website files"
-      - mkdir -p output
-      # Copy all HTML and CSS files to output directory
-      - find . -name "*.html" -exec cp --parents {} output \;
-      - find . -name "*.css" -exec cp --parents {} output \;
-      # Verify files were copied
-      - echo "Contents of output directory:"
-      - ls -la output/
-
+      - echo Build started on `date`
+      - cp index.html /var/www/html
+  post_build:
+    commands:
+      - echo configuring NGINX
 artifacts:
   files:
     - '**/*'
-  base-directory: 'output'
+  base-directory: 'dist'
