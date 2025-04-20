@@ -1,13 +1,19 @@
-version: 0.0
+version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Installing NGINX
+      - sudo apt-get update
+      - sudo apt-get install nginx -y
   build:
     commands:
-      - echo "Building the website"
-      - find . -type f -name "*.html" -exec cp {} $CODEBUILD_OUTPUT_DIR \;
-      - find . -type f -name "*.css" -exec cp {} $CODEBUILD_OUTPUT_DIR \;
-
+      - echo Build started on `date`
+      - cp index.html /var/www/html
+  post_build:
+    commands:
+      - echo configuring NGINX
 artifacts:
   files:
     - '**/*'
-  base-directory: $CODEBUILD_OUTPUT_DIR
+  base-directory: 'dist'
