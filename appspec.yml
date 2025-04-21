@@ -1,8 +1,10 @@
 version: 0.0
 os: linux
+
 files:
   - source: /
     destination: /var/www/html
+
 permissions:
   - object: /var/www/html
     pattern: "**"
@@ -18,6 +20,7 @@ permissions:
     mode: 644
     type:
       - file
+
 hooks:
   BeforeInstall:
     - location: scripts/stop_nginx.sh
