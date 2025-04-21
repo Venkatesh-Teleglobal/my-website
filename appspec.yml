@@ -2,12 +2,10 @@ version: 0.0
 os: linux
 
 files:
-  # Copies all files from the root of the project (deployment archive) to /var/www/html
   - source: /  
     destination: /var/www/html
 
 permissions:
-  # Set the permissions for directories
   - object: /var/www/html
     pattern: "**"
     owner: www-data
@@ -26,12 +24,8 @@ permissions:
       - file
 
 hooks:
-  BeforeInstall:
-    - location: scripts/stop_nginx.sh
-      timeout: 300
-      runas: root
   AfterInstall:
-    - location: scripts/fix_permissions.sh
+    - location: scripts/install_nginx.sh
       timeout: 300
       runas: root
   ApplicationStart:
