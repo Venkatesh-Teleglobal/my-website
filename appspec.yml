@@ -5,24 +5,6 @@ files:
   - source: /  
     destination: /var/www/html
 
-permissions:
-  - object: /var/www/html
-    pattern: "**"
-    owner: www-data
-    group: www-data
-    mode: 755
-    type:
-      - directory
-
-  # Set the permissions for files
-  - object: /var/www/html
-    pattern: "**"
-    owner: www-data
-    group: www-data
-    mode: 644
-    type:
-      - file
-
 hooks:
   AfterInstall:
     - location: scripts/install_nginx.sh
