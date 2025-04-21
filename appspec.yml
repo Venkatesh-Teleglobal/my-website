@@ -2,10 +2,12 @@ version: 0.0
 os: linux
 
 files:
-  - source: https://github.com/Venkatesh-Teleglobal/my-website
+  # Copies all files from the root of the project (deployment archive) to /var/www/html
+  - source: /  
     destination: /var/www/html
 
 permissions:
+  # Set the permissions for directories
   - object: /var/www/html
     pattern: "**"
     owner: www-data
@@ -13,6 +15,8 @@ permissions:
     mode: 755
     type:
       - directory
+
+  # Set the permissions for files
   - object: /var/www/html
     pattern: "**"
     owner: www-data
