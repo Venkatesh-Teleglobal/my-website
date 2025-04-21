@@ -3,9 +3,7 @@ os: linux
 
 files:
   - source: /
-    destination: /var/www/html
-    exclude:
-      - buildspec.yml  # Exclude the buildspec.yml file
+    destination: /var/www/html/
 
 hooks:
   AfterInstall:
