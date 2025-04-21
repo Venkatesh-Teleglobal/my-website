@@ -7,14 +7,16 @@ phases:
   pre_build:
     commands:
       - echo "Preparing build"
-      - mkdir -p dist
+      - mkdir -p dist/scripts
   build:
     commands:
       - echo "Build started on $(date)"
       - cp index.html styles.css dist/
+      - cp -r scripts dist/
   post_build:
     commands:
       - echo "Build completed on $(date)"
+
 artifacts:
   files:
     - '**/*'
