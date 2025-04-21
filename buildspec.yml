@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo "Installing dependencies"
-      - apt-get update -y
+      - sudo apt update -y
   pre_build:
     commands:
       - echo "Preparing build"
