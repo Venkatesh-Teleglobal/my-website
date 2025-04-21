@@ -2,8 +2,10 @@ version: 0.0
 os: linux
 
 files:
-  - source: index.html       # only copy this file
-    destination: /var/www/html/
+  - source: /
+    destination: /var/www/html
+    exclude:
+      - buildspec.yml  # Exclude the buildspec.yml file
 
 hooks:
   AfterInstall:
